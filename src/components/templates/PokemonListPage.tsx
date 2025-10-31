@@ -1,5 +1,5 @@
-import { PokeCard } from "@/components/PokeCard";
-import { PokeListPagination } from "@/components/PokeListPagination";
+import { PokeCard } from "@/components/organisms/PokeCard";
+import { PokeListPagination } from "@/components/organisms/PokeListPagination";
 import { ENGLISH_LANG_ID, PAGE_SIZE } from "@/consts";
 import { db } from "@/db";
 import { Fragment, PropsWithChildren } from "react";

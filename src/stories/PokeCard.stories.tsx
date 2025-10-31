@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
-import { PokeCard } from '@/components/PokeCard';
+import { PokeCard } from '@/components/organisms/PokeCard';
 
 const meta = {
   title: 'Components/PokeCard',

@@ -1,7 +1,7 @@
-import { DetailSection } from "@/components/DetailSection";
+import { DetailSection } from "@/components/organisms/DetailSection";
 import { PokemonEvolutions } from "@/app/pokemon/[pokemon]/PokemonEvolutions";
-import { AppLink } from "@/components/AppLink";
-import { PokeCard } from "@/components/PokeCard";
+import { AppLink } from "@/components/atoms/AppLink";
+import { PokeCard } from "@/components/organisms/PokeCard";
 import { PokemonDetails } from "@/app/pokemon/[pokemon]/PokemonDetails";
 import { PokemonMoves } from "@/app/pokemon/[pokemon]/PokemonMoves";
 import { PokemonStats } from "@/app/pokemon/[pokemon]/PokemonStats";
@@ -18,7 +18,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Fragment, Suspense } from "react";
-import { SubsectionTitle } from "@/components/SubsectionTitle";
+import { SubsectionTitle } from "@/components/atoms/SubsectionTitle";
 import { PokemonTcgCards } from "@/app/pokemon/[pokemon]/PokemonTcgCards";
 
 export default async function PokemonDetailPage({

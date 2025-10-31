@@ -1,5 +1,5 @@
-import { SubsectionTitle } from "@/components/SubsectionTitle";
-import { TypeBadge } from "@/components/TypeBadge";
+import { SubsectionTitle } from "@/components/atoms/SubsectionTitle";
+import { TypeBadge } from "@/components/molecules/TypeBadge";
 import { isNotNull } from "@/utils/filters";
 import type { PokemonSpeciesDetails } from "@/utils/getPokemonDetails";
 

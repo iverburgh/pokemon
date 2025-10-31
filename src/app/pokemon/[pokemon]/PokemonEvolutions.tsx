@@ -1,5 +1,5 @@
-import { SlimPokemonCard } from "@/components/SlimPokemonCard";
-import { SubsectionTitle } from "@/components/SubsectionTitle";
+import { SlimPokemonCard } from "@/components/molecules/SlimPokemonCard";
+import { SubsectionTitle } from "@/components/atoms/SubsectionTitle";
 import { ENGLISH_LANG_ID } from "@/consts";
 import { db } from "@/db";
 import { PokemonSpeciesDetails } from "@/utils/getPokemonDetails";

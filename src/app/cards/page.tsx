@@ -1,11 +1,11 @@
 import { db } from "@/db";
-import { PageTitle } from "@/components/PageTitle";
+import { PageTitle } from "@/components/atoms/PageTitle";
 import { groupBy } from "lodash-es";
-import { AppLink } from "@/components/AppLink";
+import { AppLink } from "@/components/atoms/AppLink";
 import { URLS } from "@/urls";
 import { cn } from "@/lib/utils";
 import { sortTcgCardByBadassness, TCG_ASPECT_CLASS } from "@/utils/tcg";
-import { CardBanner } from "@/components/CardBanner";
+import { CardBanner } from "@/components/atoms/CardBanner";
 
 export default async function CardsPage() {
   const sets = await db.tcg_set.findMany({
@@ -83,3 +83,4 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "numeric",
 });
+

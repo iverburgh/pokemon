@@ -1,8 +1,8 @@
 "use client";
 
 import { AllPokemonForTypeSelector } from "@/app/types/page";
-import { PokeCard } from "@/components/PokeCard";
-import { TypeBadge } from "@/components/TypeBadge";
+import { PokeCard } from "@/components/organisms/PokeCard";
+import { TypeBadge } from "@/components/molecules/TypeBadge";
 import { TYPE_COLORS } from "@/consts";
 import { useSearchParamsState } from "@/utils/useSearchParamsState";
 import { Fragment } from "react";
@@ -137,3 +137,4 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
     );
   }
 }
+

@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import { Header } from "@/components/templates/Header";
 import { getItemsForSearch } from "@/utils/search";
 import type { Metadata, Viewport } from "next";
 import { Baloo_Chettan_2 } from "next/font/google";
@@ -50,3 +50,4 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     </html>
   );
 }
+

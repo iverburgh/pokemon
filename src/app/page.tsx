@@ -1,5 +1,5 @@
-import { PageTitle } from "@/components/PageTitle";
-import { PokemonListPage } from "@/components/PokemonListPage";
+import { PageTitle } from "@/components/atoms/PageTitle";
+import { PokemonListPage } from "@/components/templates/PokemonListPage";
 
 export default async function Home() {
   return (
@@ -8,3 +8,4 @@ export default async function Home() {
     </PokemonListPage>
   );
 }
+

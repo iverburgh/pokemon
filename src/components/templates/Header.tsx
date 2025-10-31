@@ -1,9 +1,9 @@
 "use client";
 
-import { AppLink } from "@/components/AppLink";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { Pokeball } from "@/components/Pokeball";
-import { TypeIcon } from "@/components/TypeIcon";
+import { AppLink } from "@/components/atoms/AppLink";
+import { ImageWithFallback } from "@/components/atoms/ImageWithFallback";
+import { Pokeball } from "@/components/atoms/Pokeball";
+import { TypeIcon } from "@/components/atoms/TypeIcon";
 import { Button } from "@/components/ui/button";
 import {
   CommandDialog,

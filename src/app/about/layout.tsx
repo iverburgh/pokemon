@@ -7,3 +7,4 @@ export default function AboutLayout({ children }: { children: ReactNode }) {
     </div>
   );
 }
+

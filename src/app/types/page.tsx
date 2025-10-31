@@ -1,5 +1,5 @@
-import { PageTitle } from "@/components/PageTitle";
-import { TypeBadge } from "@/components/TypeBadge";
+import { PageTitle } from "@/components/atoms/PageTitle";
+import { TypeBadge } from "@/components/molecules/TypeBadge";
 import { ENGLISH_LANG_ID, EXCLUDED_POKEMON_IDS, MAX_TYPE_ID } from "@/consts";
 import { db } from "@/db";
 import { TypeComboSelector } from "@/app/types/TypeComboSelector";
@@ -115,3 +115,4 @@ async function getAllPokemonForTypeSelector() {
     },
   });
 }
+

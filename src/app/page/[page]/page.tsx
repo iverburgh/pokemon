@@ -1,4 +1,4 @@
-import { PokemonListPage } from "@/components/PokemonListPage";
+import { PokemonListPage } from "@/components/templates/PokemonListPage";
 import { PAGE_SIZE } from "@/consts";
 import { db } from "@/db";
 

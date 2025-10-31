@@ -8,7 +8,7 @@ import {
   CarouselContent,
   CarouselControls,
   CarouselItem,
-} from "./ui/carousel";
+} from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import { TCG_ASPECT_CLASS } from "@/utils/tcg";
 

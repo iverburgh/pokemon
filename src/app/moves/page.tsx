@@ -1,6 +1,6 @@
-import { DetailSection } from "@/components/DetailSection";
-import { AppLink } from "@/components/AppLink";
-import { PageTitle } from "@/components/PageTitle";
+import { DetailSection } from "@/components/organisms/DetailSection";
+import { AppLink } from "@/components/atoms/AppLink";
+import { PageTitle } from "@/components/atoms/PageTitle";
 import { ENGLISH_LANG_ID, MAX_TYPE_ID } from "@/consts";
 import { db } from "@/db";
 import { groupBy, startCase } from "lodash-es";
@@ -99,3 +99,4 @@ export default async function MovesPage() {
     );
   }
 }
+
