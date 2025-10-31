@@ -15,6 +15,10 @@
     "pull:database": "TODO: grab raw sqlite file from github",
     "db:massageRawData": "node ./scripts/massageRawData.ts",
     "refresh:cards": "node scripts/refreshCardData.ts",
+    "test": "vitest",
+    "test:storybook": "vitest --project=storybook",
+    "test:coverage": "vitest --project=storybook --coverage",
+    "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
