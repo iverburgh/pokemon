@@ -14,7 +14,9 @@
     "generate:data": "node scripts/generateData.ts",
     "pull:database": "TODO: grab raw sqlite file from github",
     "db:massageRawData": "node ./scripts/massageRawData.ts",
-    "refresh:cards": "node scripts/refreshCardData.ts"
+    "refresh:cards": "node scripts/refreshCardData.ts",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -47,21 +49,34 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "4.1.2",
     "@eslint/eslintrc": "^3",
+    "@storybook/addon-a11y": "10.0.2",
+    "@storybook/addon-docs": "10.0.2",
+    "@storybook/addon-onboarding": "10.0.2",
+    "@storybook/addon-vitest": "10.0.2",
+    "@storybook/nextjs-vite": "^10.0.2",
     "@tailwindcss/postcss": "^4.0.8",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/browser-playwright": "^4.0.5",
+    "@vitest/coverage-v8": "^4.0.5",
     "axios": "^1.7.9",
     "cheerio": "^1.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "eslint-plugin-storybook": "10.0.2",
     "node-vibrant": "^4.0.3",
+    "playwright": "^1.56.1",
     "postcss": "^8",
     "prettier": "^3.5.2",
     "sqlite3": "^5.1.7",
+    "storybook": "10.0.2",
     "tailwindcss": "^4.0.6",
-    "typescript": "^5"
-  }
+    "typescript": "^5",
+    "vitest": "^4.0.5"
+  },
+  "packageManager": "yarn@4.10.3"
 }

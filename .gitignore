@@ -45,3 +45,5 @@ next-env.d.ts
 
 # Data
 ./data/pokeapi-raw.sqlite3
+*storybook.log
+storybook-static
