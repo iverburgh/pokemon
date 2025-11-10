@@ -1,7 +1,7 @@
 "use client";
 
-import { AppLink } from "@/components/atoms/AppLink";
-import { DetailSection } from "@/components/organisms/DetailSection";
+import { AppLink } from "@/components/atoms";
+import { DetailSection } from "@/components/organisms";
 import {
   Select,
   SelectContent,

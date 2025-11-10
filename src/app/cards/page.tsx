@@ -1,11 +1,9 @@
 import { db } from "@/db";
-import { PageTitle } from "@/components/atoms/PageTitle";
+import { PageTitle, AppLink, CardBanner } from "@/components/atoms";
 import { groupBy } from "lodash-es";
-import { AppLink } from "@/components/atoms/AppLink";
 import { URLS } from "@/urls";
 import { cn } from "@/lib/utils";
 import { sortTcgCardByBadassness, TCG_ASPECT_CLASS } from "@/utils/tcg";
-import { CardBanner } from "@/components/atoms/CardBanner";
 
 export default async function CardsPage() {
   const sets = await db.tcg_set.findMany({

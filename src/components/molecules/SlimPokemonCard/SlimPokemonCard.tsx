@@ -1,5 +1,5 @@
-import { AppLink } from "@/components/atoms/AppLink";
-import { ImageWithFallback } from "@/components/atoms/ImageWithFallback";
+import { AppLink } from "@/components/atoms";
+import { ImageWithFallback } from "@/components/atoms";
 import { URLS } from "@/urls";
 
 type Props = {

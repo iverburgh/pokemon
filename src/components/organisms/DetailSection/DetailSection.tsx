@@ -1,5 +1,5 @@
 "use client";
-import { CardBanner } from "@/components/atoms/CardBanner";
+import { CardBanner } from "@/components/atoms";
 import { cn } from "@/lib/utils";
 import { PropsWithChildren, ReactNode } from "react";
 

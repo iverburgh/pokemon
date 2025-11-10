@@ -1,12 +1,12 @@
 "use client";
 
-import { AppLink } from "@/components/atoms/AppLink";
-import { ImageWithFallback } from "@/components/atoms/ImageWithFallback";
-import { TypeBadge } from "@/components/molecules/TypeBadge";
+import { AppLink } from "@/components/atoms";
+import { ImageWithFallback } from "@/components/atoms";
+import { TypeBadge } from "@/components/molecules";
 import { URLS } from "@/urls";
 import { getPokemonColors } from "@/utils/getPokemonColors";
 import clsx from "clsx";
-import { CardBanner } from "@/components/atoms/CardBanner";
+import { CardBanner } from "@/components/atoms";
 
 type Props = {
   speciesId?: number;

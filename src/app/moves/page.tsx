@@ -1,6 +1,5 @@
-import { DetailSection } from "@/components/organisms/DetailSection";
-import { AppLink } from "@/components/atoms/AppLink";
-import { PageTitle } from "@/components/atoms/PageTitle";
+import { DetailSection } from "@/components/organisms";
+import { AppLink, PageTitle } from "@/components/atoms";
 import { ENGLISH_LANG_ID, MAX_TYPE_ID } from "@/consts";
 import { db } from "@/db";
 import { groupBy, startCase } from "lodash-es";

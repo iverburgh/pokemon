@@ -1,7 +1,6 @@
 "use client";
 
-import { CardCarousel, CardCarouselHandle } from "@/components/organisms/CardCarousel";
-import { DetailSection } from "@/components/organisms/DetailSection";
+import { CardCarousel, CardCarouselHandle, DetailSection } from "@/components/organisms";
 import { type TcgCard } from "@/utils/getPokemonDetails";
 import { TCG_ASPECT_CLASS } from "@/utils/tcg";
 import { useSearchParamsState } from "@/utils/useSearchParamsState";

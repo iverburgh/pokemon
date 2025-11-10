@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
-import { TypeIcon } from "@/components/atoms/TypeIcon";
+import { TypeIcon } from "@/components/atoms";
 import { URLS } from "@/urls";
 import { TYPE_COLORS } from "@/consts";
 import { Check } from "lucide-react";

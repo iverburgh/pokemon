@@ -1,7 +1,5 @@
-import { DetailSection } from "@/components/organisms/DetailSection";
-import { PageTitle } from "@/components/atoms/PageTitle";
-import { PokeCard } from "@/components/organisms/PokeCard";
-import { SubsectionTitle } from "@/components/atoms/SubsectionTitle";
+import { DetailSection, PokeCard } from "@/components/organisms";
+import { PageTitle, SubsectionTitle } from "@/components/atoms";
 import {
   ENGLISH_LANG_ID,
   LEVEL_UP_LEARN_METHOD_ID,

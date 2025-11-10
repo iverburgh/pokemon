@@ -1,6 +1,6 @@
 "use client";
 
-import { AppLink } from "@/components/atoms/AppLink";
+import { AppLink } from "@/components/atoms";
 import {
   Popover,
   PopoverContent,

@@ -4,8 +4,8 @@ import { TcgSetDetails } from "@/app/cards/set/[set]/page";
 import { getTcgCardTags, TCG_ASPECT_CLASS } from "@/utils/tcg";
 import { cn } from "@/lib/utils";
 import { useMemo, useRef, useState } from "react";
-import { CardCarousel, CardCarouselHandle } from "@/components/organisms/CardCarousel";
-import { PageTitle } from "@/components/atoms/PageTitle";
+import { CardCarousel, CardCarouselHandle } from "@/components/organisms";
+import { PageTitle } from "@/components/atoms";
 import {
   SelectTrigger,
   SelectValue,
