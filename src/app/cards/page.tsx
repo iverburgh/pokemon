@@ -1,11 +1,9 @@
+import { CardsListPage } from "@/components/pages";
 import { db } from "@/db";
-import { PageTitle, AppLink, CardBanner } from "@/components/atoms";
 import { groupBy } from "lodash-es";
-import { URLS } from "@/urls";
-import { cn } from "@/lib/utils";
-import { sortTcgCardByBadassness, TCG_ASPECT_CLASS } from "@/utils/tcg";
+import { sortTcgCardByBadassness } from "@/utils/tcg";
 
-export default async function CardsPage() {
+export default async function CardsRoute() {
   const sets = await db.tcg_set.findMany({
     orderBy: {
       release_date: "desc",
@@ -22,53 +20,29 @@ export default async function CardsPage() {
     },
   });
 
-  const series = groupBy(sets, "series");
+  const seriesGrouped = groupBy(sets, "series");
 
-  return (
-    <div className="flex flex-col gap-16">
-      <PageTitle>TCG Cards</PageTitle>
-
-      {Object.entries(series).map(([series, sets]) => (
-        <div key={series}>
-          <h2 className="font-bold text-4xl mb-12">{series}</h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-10">
-            {sets.map((set) => {
-              const topCards = set.tcg_card
-                .toSorted(sortTcgCardByBadassness)
-                .slice(0, 4);
-
-              return (
-                <AppLink
-                  key={set.id}
-                  className="drop-border-sm interactive rounded-lg p-3 bg-card-background relative isolate pt-10"
-                  href={URLS.cardSet({ id: set.id })}
-                >
-                  <CardBanner border="sm">
-                    {set.name}{" "}
-                    <span className="text-foreground/60 text-sm">
-                      ({dateFormatter.format(set.release_date)})
-                    </span>
-                  </CardBanner>
-                  <div className="grid grid-cols-4 gap-2">
-                    {topCards.map((card) => (
-                      <img
-                        key={card.id}
-                        className={cn("w-full", TCG_ASPECT_CLASS)}
-                        src={card.image_small_url!}
-                        loading="lazy"
-                        alt={card.name!}
-                      />
-                    ))}
-                  </div>
-                </AppLink>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
+  // Transform data for the component
+  const transformedSeries = Object.entries(seriesGrouped).map(
+    ([seriesName, sets]) => ({
+      name: seriesName,
+      sets: sets.map((set) => ({
+        id: set.id,
+        name: set.name ?? "",
+        release_date: set.release_date,
+        topCards: set.tcg_card
+          .toSorted(sortTcgCardByBadassness)
+          .slice(0, 4)
+          .map((card) => ({
+            id: card.id,
+            name: card.name,
+            image_small_url: card.image_small_url,
+          })),
+      })),
+    }),
   );
+
+  return <CardsListPage series={transformedSeries} />;
 }
 
 export async function generateMetadata() {
@@ -76,9 +50,4 @@ export async function generateMetadata() {
     title: "TCG Cards",
   };
 }
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  year: "numeric",
-});
 

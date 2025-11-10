@@ -1,26 +1,16 @@
-import { PokeCard } from "@/components/organisms";
-import { DetailSection } from "@/components/molecules";
-import { PokemonEvolutions } from "@/app/pokemon/[pokemon]/PokemonEvolutions";
-import { AppLink, SubsectionTitle } from "@/components/atoms";
-import { PokemonDetails } from "@/app/pokemon/[pokemon]/PokemonDetails";
-import { PokemonMoves } from "@/app/pokemon/[pokemon]/PokemonMoves";
-import { PokemonStats } from "@/app/pokemon/[pokemon]/PokemonStats";
+import { PokemonDetailPage } from "@/components/pages";
 import { ENGLISH_LANG_ID, EXCLUDED_POKEMON_IDS } from "@/consts";
 import { db } from "@/db";
-import { URLS } from "@/urls";
 import { getPokemonColors } from "@/utils/getPokemonColors";
 import {
   getFullPokemonDetails,
   getTcgCardsForSpecies,
 } from "@/utils/getPokemonDetails";
 import { sumBy } from "lodash-es";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Fragment, Suspense } from "react";
-import { PokemonTcgCards } from "@/app/pokemon/[pokemon]/PokemonTcgCards";
 
-export default async function PokemonDetailPage({
+export default async function PokemonDetailRoute({
   params,
 }: {
   params: Promise<{ pokemon: string }>;
@@ -106,170 +96,55 @@ export default async function PokemonDetailPage({
           },
         },
       },
-      // Types, if we want to display them
-      // pokemon_v2_pokemontype: {
-      //   include: {
-      //     pokemon_v2_type: {
-      //       include: {
-      //         pokemon_v2_typename: {
-      //           where: {
-      //             language_id: ENGLISH_LANG_ID,
-      //           },
-      //         },
-      //       },
-      //     },
-      //   },
-      // },
     },
   });
 
+  // Transform navigation Pokemon data
+  const transformNavPokemon = (
+    navPokemon: typeof prevPokemon | typeof nextPokemon,
+  ) => {
+    if (!navPokemon || navPokemon.pokemon_v2_pokemon.length === 0) {
+      return null;
+    }
+    return {
+      name: navPokemon.pokemon_v2_pokemon[0].name,
+      displayName: navPokemon.pokemon_v2_pokemonspeciesname[0]!.name,
+      imageName: navPokemon.pokemon_v2_pokemon[0].name,
+    };
+  };
+
   return (
-    <Fragment>
-      <div className="grid gap-x-8 gap-y-12 grid-cols-1 sm:grid-cols-2">
-        <PokeCard
-          speciesId={species!.id}
-          name={name}
-          speciesName={displayName}
-          formName={
-            pokemon.pokemon_v2_pokemonform[0]?.pokemon_v2_pokemonformname[0]
-              ?.name
-          }
-          types={pokemon.pokemon_v2_pokemontype!.map((type) => ({
-            name: type.pokemon_v2_type!.name,
-            displayName: type.pokemon_v2_type!.pokemon_v2_typename[0].name,
-          }))}
-          isLarge
-          className="order-1"
-        />
-
-        <DetailSection
-          title={`Stats (${statsTotal} total)`}
-          className="order-3 sm:order-2"
-          innerClassName="aspect-square"
-        >
-          <PokemonStats
-            statData={details.pokemon.pokemon_v2_pokemonstat}
-            color={lightVibrant}
-          />
-        </DetailSection>
-
-        <DetailSection
-          title="Details"
-          className="order-2 sm:order-3 sm:col-span-2 flex flex-col"
-          innerClassName="gap-12"
-        >
-          {Number(evChain?.pokemon_v2_pokemonspecies?.length) > 1 && (
-            <PokemonEvolutions
-              evolutionChain={evChain!}
-              pokemon={details.pokemon}
-              displayName={displayName}
-            />
-          )}
-
-          <PokemonDetails species={details} />
-
-          {relatedPokemon.length > 1 && (
-            <div>
-              <SubsectionTitle
-                className="mb-4"
-                description={`Other variants of ${displayName}`}
-              >
-                Related Pokémon
-              </SubsectionTitle>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {relatedPokemon.map((p) => (
-                  <PokeCard
-                    key={p.id}
-                    name={p.name}
-                    speciesName={displayName}
-                    formName={
-                      p.pokemon_v2_pokemonform[0]?.pokemon_v2_pokemonformname[0]
-                        ?.name
-                    }
-                    types={[]}
-                    isLink={p.id !== pokemon.id}
-                    noViewTransition
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </DetailSection>
-
-        <Suspense fallback={<div>Loading...</div>}>
-          <PokemonMoves moveData={details.pokemon.pokemon_v2_pokemonmove} />
-        </Suspense>
-
-        {tcgCards.length > 0 && (
-          <Suspense fallback={<div>Loading...</div>}>
-            <PokemonTcgCards cards={tcgCards} speciesName={displayName} />
-          </Suspense>
-        )}
-      </div>
-
-      {/* bottom pagination */}
-      <div className="sticky bottom-0 inset-x-0 mt-8 max-w-content mx-auto content-x-padding pb-6 sm:pb-2 flex justify-center">
-        <div
-          className="bg-background rounded-lg drop-border-sm overflow-hidden flex"
-          style={{ viewTransitionName: "pagination-footer" }}
-        >
-          <AppLink
-            href={
-              prevPokemon && prevPokemon.pokemon_v2_pokemon.length > 0
-                ? URLS.pokemonDetail({
-                    name: prevPokemon.pokemon_v2_pokemon[0].name,
-                  })
-                : URLS.home()
-            }
-            className="flex items-center justify-between py-2 px-2 gap-1 min-w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
-          >
-            <ChevronLeft className="w-4" />
-            {prevPokemon && prevPokemon.pokemon_v2_pokemon.length > 0 ? (
-              <img
-                src={`/img/pokemon/${prevPokemon.pokemon_v2_pokemon[0].name}.avif`}
-                className="w-5 aspect-square object-center object-contain"
-                loading="lazy"
-                alt={prevPokemon.pokemon_v2_pokemon[0].name}
-              />
-            ) : (
-              <span className="w-4" />
-            )}
-            <span className="flex-1 text-center">
-              {prevPokemon
-                ? prevPokemon.pokemon_v2_pokemonspeciesname[0]!.name
-                : "Pokémon"}
-            </span>
-          </AppLink>
-          <AppLink
-            href={
-              nextPokemon && nextPokemon.pokemon_v2_pokemon.length > 0
-                ? URLS.pokemonDetail({
-                    name: nextPokemon.pokemon_v2_pokemon[0].name,
-                  })
-                : URLS.home()
-            }
-            className="flex items-center py-2 px-2 gap-1 w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
-          >
-            <span className="flex-1 text-center truncate">
-              {nextPokemon
-                ? nextPokemon.pokemon_v2_pokemonspeciesname[0]!.name
-                : "Pokémon"}
-            </span>
-            {nextPokemon && nextPokemon.pokemon_v2_pokemon.length > 0 ? (
-              <img
-                src={`/img/pokemon/${nextPokemon.pokemon_v2_pokemon[0].name}.avif`}
-                className="w-5 aspect-square object-center object-contain"
-                loading="lazy"
-                alt={nextPokemon.pokemon_v2_pokemon[0].name}
-              />
-            ) : (
-              <span className="w-4" />
-            )}
-            <ChevronRight className="w-4 shrink-0" />
-          </AppLink>
-        </div>
-      </div>
-    </Fragment>
+    <PokemonDetailPage
+      name={name}
+      displayName={displayName}
+      speciesId={species!.id}
+      formName={
+        pokemon.pokemon_v2_pokemonform[0]?.pokemon_v2_pokemonformname[0]?.name
+      }
+      types={pokemon.pokemon_v2_pokemontype!.map((type) => ({
+        name: type.pokemon_v2_type!.name,
+        displayName: type.pokemon_v2_type!.pokemon_v2_typename[0].name,
+      }))}
+      statsTotal={statsTotal}
+      statData={details.pokemon.pokemon_v2_pokemonstat}
+      statsColor={lightVibrant ?? "#000000"}
+      details={details}
+      evolutionChain={evChain}
+      hasEvolutionChain={
+        Number(evChain?.pokemon_v2_pokemonspecies?.length) > 1
+      }
+      relatedPokemon={relatedPokemon.map((p) => ({
+        id: p.id,
+        name: p.name,
+        formName:
+          p.pokemon_v2_pokemonform[0]?.pokemon_v2_pokemonformname[0]?.name,
+      }))}
+      moveData={details.pokemon.pokemon_v2_pokemonmove}
+      tcgCards={tcgCards}
+      prevPokemon={transformNavPokemon(prevPokemon)}
+      nextPokemon={transformNavPokemon(nextPokemon)}
+      currentPokemonId={pokemon.id}
+    />
   );
 }
 

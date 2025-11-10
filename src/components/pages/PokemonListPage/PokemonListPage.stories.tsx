@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 const meta = {
-  title: 'Templates/PokemonListPage',
+  title: 'Pages/PokemonListPage',
   parameters: {
     layout: 'fullscreen',
   },

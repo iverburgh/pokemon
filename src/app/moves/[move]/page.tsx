@@ -1,6 +1,4 @@
-import { PokeCard } from "@/components/organisms";
-import { DetailSection } from "@/components/molecules";
-import { PageTitle, SubsectionTitle } from "@/components/atoms";
+import { MoveDetailPage } from "@/components/pages";
 import {
   ENGLISH_LANG_ID,
   LEVEL_UP_LEARN_METHOD_ID,
@@ -11,7 +9,7 @@ import { isNotNull } from "@/utils/filters";
 import { uniqBy } from "lodash-es";
 import { notFound } from "next/navigation";
 
-export default async function MovePage({
+export default async function MoveRoute({
   params,
 }: {
   params: Promise<{ move: string }>;
@@ -59,107 +57,31 @@ export default async function MovePage({
     "id",
   );
 
+  // Transform Pokemon data
+  const transformPokemon = (pokemon: (typeof pokemonLearnedFromLevelUp)[number]) => ({
+    id: pokemon.id,
+    name: pokemon.name,
+    pokemon_species_id: pokemon.pokemon_species_id,
+    speciesName:
+      pokemon.pokemon_v2_pokemonspecies!.pokemon_v2_pokemonspeciesname[0]!.name,
+    formName:
+      pokemon.pokemon_v2_pokemonform?.[0]?.pokemon_v2_pokemonformname[0]?.name,
+    types: pokemon.pokemon_v2_pokemontype.map((pokemonType) => ({
+      name: pokemonType.pokemon_v2_type!.name,
+      displayName: pokemonType.pokemon_v2_type!.pokemon_v2_typename[0]?.name,
+    })),
+  });
+
   return (
-    <div className="flex flex-col gap-16">
-      <PageTitle>{move.pokemon_v2_movename[0]?.name}</PageTitle>
-
-      <DetailSection title="Stats" innerClassName="pt-8">
-        <div className="flex justify-center gap-12">
-          <StatItem label="Power" value={move.power} />
-          <StatItem
-            label="Accuracy"
-            value={move.accuracy ? `${move.accuracy}%` : "–"}
-          />
-          <StatItem label="PP" value={move.pp} />
-        </div>
-
-        {effects.length > 0 && (
-          <div className="mt-8">
-            <div className="text-muted-foreground font-medium">Effects</div>
-            <div className="text-sm">{effects.join(", ")}</div>
-          </div>
-        )}
-      </DetailSection>
-
-      {pokemonLearnedFromLevelUp.length > 0 && (
-        <div>
-          <SubsectionTitle className="mb-8">
-            Pokemon that learn this move by level up
-          </SubsectionTitle>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {pokemonLearnedFromLevelUp.map((pokemon) => (
-              <PokeCard
-                key={pokemon.id}
-                speciesId={pokemon.pokemon_species_id!}
-                name={pokemon.name}
-                formName={
-                  pokemon.pokemon_v2_pokemonform?.[0]
-                    ?.pokemon_v2_pokemonformname[0]?.name
-                }
-                speciesName={
-                  pokemon.pokemon_v2_pokemonspecies!
-                    .pokemon_v2_pokemonspeciesname[0]!.name
-                }
-                types={pokemon.pokemon_v2_pokemontype.map((pokemonType) => ({
-                  name: pokemonType.pokemon_v2_type!.name,
-                  displayName:
-                    pokemonType.pokemon_v2_type!.pokemon_v2_typename[0]?.name,
-                }))}
-                isLink={true}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {pokemonLearnedFromTMHM.length > 0 && (
-        <div>
-          <SubsectionTitle className="mb-8">
-            Pokemon that learn this move by TM/HM
-          </SubsectionTitle>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {pokemonLearnedFromTMHM.map((pokemon) => (
-              <PokeCard
-                speciesId={pokemon.pokemon_species_id!}
-                key={pokemon.id}
-                name={pokemon.name}
-                formName={
-                  pokemon.pokemon_v2_pokemonform?.[0]
-                    ?.pokemon_v2_pokemonformname[0]?.name
-                }
-                speciesName={
-                  pokemon.pokemon_v2_pokemonspecies!
-                    .pokemon_v2_pokemonspeciesname[0]!.name
-                }
-                types={pokemon.pokemon_v2_pokemontype.map((pokemonType) => ({
-                  name: pokemonType.pokemon_v2_type!.name,
-                  displayName:
-                    pokemonType.pokemon_v2_type!.pokemon_v2_typename[0]?.name,
-                }))}
-                isLink={true}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-function StatItem({
-  label,
-  value,
-}: {
-  label: string;
-  value: number | string | null;
-}) {
-  return (
-    <div className="flex flex-col gap-1 items-center">
-      <div className="text-3xl font-bold">{value || "–"}</div>
-      <div className="text-muted-foreground font-medium">{label}</div>
-    </div>
+    <MoveDetailPage
+      moveName={move.pokemon_v2_movename[0]?.name ?? movename}
+      power={move.power}
+      accuracy={move.accuracy}
+      pp={move.pp}
+      effects={effects}
+      pokemonLearnedFromLevelUp={pokemonLearnedFromLevelUp.map(transformPokemon)}
+      pokemonLearnedFromTMHM={pokemonLearnedFromTMHM.map(transformPokemon)}
+    />
   );
 }
 export async function generateStaticParams() {

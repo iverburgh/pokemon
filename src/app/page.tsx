@@ -1,5 +1,5 @@
 import { PageTitle } from "@/components/atoms";
-import { PokemonListPage } from "@/components/templates";
+import { PokemonListPage } from "@/components/pages";
 
 export default async function Home() {
   return (

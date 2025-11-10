@@ -1,4 +1,4 @@
-import { Header } from "@/components/templates";
+import { Header } from "@/components/organisms";
 import { getItemsForSearch } from "@/utils/search";
 import type { Metadata, Viewport } from "next";
 import { Baloo_Chettan_2 } from "next/font/google";

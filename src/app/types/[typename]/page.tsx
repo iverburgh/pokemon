@@ -1,17 +1,14 @@
-import { PokeCard } from "@/components/organisms";
-import { PageTitle, SubsectionTitle } from "@/components/atoms";
-import { DetailSection, TypeBadge } from "@/components/molecules";
+import { TypeDetailPage } from "@/components/pages";
 import {
   ENGLISH_LANG_ID,
   EXCLUDED_POKEMON_IDS,
   MAX_TYPE_ID,
-  TYPE_COLORS,
 } from "@/consts";
 import { db } from "@/db";
 import { getPokemonTypeEfficacies } from "@/utils/pokemonTypes";
 import { notFound } from "next/navigation";
 
-export default async function TypeDetailPage({
+export default async function TypeDetailRoute({
   params,
 }: {
   params: Promise<{ typename: string }>;
@@ -100,94 +97,33 @@ export default async function TypeDetailPage({
     },
   });
 
+  // Transform data for the component
+  const transformedPokemon = allPokemon.map((p) => ({
+    id: p.id,
+    name: p.name,
+    pokemon_species_id: p.pokemon_species_id,
+    speciesName:
+      p.pokemon_v2_pokemonspecies?.pokemon_v2_pokemonspeciesname[0]?.name ??
+      p.name,
+    formName:
+      p.pokemon_v2_pokemonform?.at(0)?.pokemon_v2_pokemonformname[0]?.name,
+    types: p.pokemon_v2_pokemontype.map((t) => ({
+      name: t.pokemon_v2_type!.name,
+      displayName: t.pokemon_v2_type!.pokemon_v2_typename[0].name,
+    })),
+  }));
+
   return (
-    <div className="flex flex-col gap-16">
-      <PageTitle>{pokeType.pokemon_v2_typename[0].name}</PageTitle>
-
-      <div className="grid grid-cols-1 gap-16">
-        <DetailSection title="Attacking effectiveness">
-          <p className="mb-2">
-            The effectiveness of{" "}
-            <span
-              className="font-bold"
-              style={{
-                color: TYPE_COLORS[pokeType.name],
-              }}
-            >
-              {pokeType.pokemon_v2_typename[0].name}
-            </span>{" "}
-            against other types.
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-            {effectiveAgainst.map((efficacy) => (
-              <TypeBadge
-                key={efficacy.name}
-                name={efficacy.name}
-                displayName={efficacy.displayName}
-                variant="efficacy"
-                factor={efficacy.damageFactor}
-              />
-            ))}
-          </div>
-        </DetailSection>
-
-        <DetailSection title="Weaknesses">
-          <p className="mb-2">
-            The effectiveness of other types against{" "}
-            <span
-              className="font-bold"
-              style={{ color: TYPE_COLORS[pokeType.name] }}
-            >
-              {pokeType.pokemon_v2_typename[0].name}
-            </span>
-            .
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-            {effectiveFrom.map((efficacy) => (
-              <TypeBadge
-                key={efficacy.name}
-                name={efficacy.name}
-                displayName={efficacy.displayName}
-                variant="efficacy"
-                factor={efficacy.damageFactor}
-              />
-            ))}
-          </div>
-        </DetailSection>
-      </div>
-
-      <div>
-        <SubsectionTitle
-          className="mb-8"
-          description={`View all ${allPokemon.length} Pokemon with a type of ${pokeType.pokemon_v2_typename[0].name}.`}
-        >
-          Pokemon with this type
-        </SubsectionTitle>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
-          {allPokemon.map((p) => (
-            <PokeCard
-              key={p.id}
-              isLink={true}
-              speciesId={p.pokemon_species_id!}
-              name={p.name}
-              speciesName={
-                p.pokemon_v2_pokemonspecies?.pokemon_v2_pokemonspeciesname[0]
-                  ?.name ?? p.name
-              }
-              formName={
-                p.pokemon_v2_pokemonform?.at(0)?.pokemon_v2_pokemonformname[0]
-                  ?.name
-              }
-              types={p.pokemon_v2_pokemontype.map((t) => ({
-                name: t.pokemon_v2_type!.name,
-                displayName: t.pokemon_v2_type!.pokemon_v2_typename[0].name,
-              }))}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    <TypeDetailPage
+      pokeType={{
+        id: pokeType.id,
+        name: pokeType.name,
+        displayName: pokeType.pokemon_v2_typename[0].name,
+      }}
+      effectiveAgainst={effectiveAgainst}
+      effectiveFrom={effectiveFrom}
+      allPokemon={transformedPokemon}
+    />
   );
 }
 

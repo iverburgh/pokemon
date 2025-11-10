@@ -13,6 +13,7 @@ export {
   CommandSeparator, 
   CommandShortcut 
 } from './Command/Command';
+export { Header } from './Header/Header';
 export { 
   NavigationMenu, 
   NavigationMenuContent, 
