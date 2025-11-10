@@ -5,7 +5,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/components/molecules";
 import { PAGE_SIZE } from "@/consts";
 import { URLS } from "@/urls";
 import { clsx } from "clsx";

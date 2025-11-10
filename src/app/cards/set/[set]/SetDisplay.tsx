@@ -13,7 +13,7 @@ import {
   SelectContent,
   SelectItem,
   SelectLabel,
-} from "@/components/ui/select";
+} from "@/components/molecules";
 import { SelectGroup } from "@radix-ui/react-select";
 
 export function SetDisplay({ details }: { details: TcgSetDetails }) {

@@ -1,7 +1,6 @@
 "use client";
 
-import { AppLink, ImageWithFallback, Pokeball, TypeIcon } from "@/components/atoms";
-import { Button } from "@/components/ui/button";
+import { AppLink, Button, ImageWithFallback, Pokeball, TypeIcon } from "@/components/atoms";
 import {
   CommandDialog,
   CommandEmpty,
@@ -9,7 +8,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command";
+} from "@/components/organisms";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,7 +16,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from "@/components/organisms";
 import { TYPE_COLORS } from "@/consts";
 import { URLS } from "@/urls";
 import type { PokemonSearchItem, TypeSearchItem } from "@/utils/search";

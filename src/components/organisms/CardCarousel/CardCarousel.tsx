@@ -1,14 +1,14 @@
 "use client";
 
 import { forwardRef, useImperativeHandle, useState } from "react";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/molecules";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import {
   Carousel,
   CarouselContent,
   CarouselControls,
   CarouselItem,
-} from "@/components/ui/carousel";
+} from "@/components/organisms";
 import { cn } from "@/lib/utils";
 import { TCG_ASPECT_CLASS } from "@/utils/tcg";
 

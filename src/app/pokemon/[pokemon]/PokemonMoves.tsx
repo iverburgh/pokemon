@@ -9,7 +9,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/molecules";
 import { LEVEL_UP_LEARN_METHOD_ID, TM_LEARN_METHOD_ID } from "@/consts";
 import type { PokemonSpeciesDetails } from "@/utils/getPokemonDetails.ts";
 import { useSearchParamsState } from "@/utils/useSearchParamsState";
