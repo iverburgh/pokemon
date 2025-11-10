@@ -1,5 +1,21 @@
 // TypeBadge styles
 .typeBadge {
-  // Component-specific styles
-  // Using CVA for variants
+  transition: all 0.2s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.typeIcon {
+  transition: transform 0.2s ease-in-out;
+  
+  .typeBadge:hover & {
+    transform: rotate(5deg);
+  }
 }

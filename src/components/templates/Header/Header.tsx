@@ -18,6 +18,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/organisms";
 import { TYPE_COLORS } from "@/consts";
+import styles from "./Header.module.scss";
 import { URLS } from "@/urls";
 import type { PokemonSearchItem, TypeSearchItem } from "@/utils/search";
 import { Layers2, Swords, CreditCard, Info } from "lucide-react";

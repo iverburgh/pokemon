@@ -8,6 +8,7 @@ import {
 } from "@/components/molecules";
 import { PAGE_SIZE } from "@/consts";
 import { URLS } from "@/urls";
+import styles from "./PokeListPagination.module.scss";
 import { clsx } from "clsx";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -29,7 +30,7 @@ export function PokeListPagination({
   return (
     <div className="max-w-content content-x-padding mx-auto pb-6 sm:pb-2 flex justify-center">
       <div
-        className="bg-background rounded-lg drop-border-sm flex overflow-hidden"
+        className={`${styles.pokeListPagination} bg-background rounded-lg drop-border-sm flex overflow-hidden`}
         style={{ viewTransitionName: "pagination-footer" }}
       >
         {renderPrevious()}

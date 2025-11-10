@@ -1,4 +1,32 @@
 // Tabs styles
-.tabs {
-  // Component-specific styles
+.tabsList {
+  background-color: var(--color-muted);
+  padding: 4px;
+  border-radius: var(--radius-md);
+}
+
+.tabsTrigger {
+  transition: all 0.15s ease-in-out;
+  
+  &:hover:not([data-state="active"]) {
+    background-color: var(--color-accent);
+  }
+  
+  &[data-state="active"] {
+    background-color: var(--color-background);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.tabsContent {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

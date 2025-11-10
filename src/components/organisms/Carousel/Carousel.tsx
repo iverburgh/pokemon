@@ -8,6 +8,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import clsx from "clsx";
+import styles from "./Carousel.module.scss";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -120,7 +121,7 @@ function Carousel({
     >
       <div
         onKeyDownCapture={handleKeyDown}
-        className={cn("relative", className)}
+        className={cn(styles.carousel, "relative", className)}
         role="region"
         aria-roledescription="carousel"
         data-slot="carousel"

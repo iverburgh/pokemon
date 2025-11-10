@@ -1,4 +1,22 @@
 // Table styles
 .table {
-  // Component-specific styles
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.tableRow {
+  transition: background-color 0.15s ease-in-out;
+  
+  &:hover {
+    background-color: var(--color-muted);
+  }
+}
+
+.tableCell {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tableHeader {
+  background-color: var(--color-muted);
+  font-weight: 600;
 }

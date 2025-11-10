@@ -1,4 +1,22 @@
 // Carousel styles
 .carousel {
-  // Component-specific styles
+  position: relative;
+}
+
+.carouselButton {
+  transition: all 0.15s ease-in-out;
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent);
+    transform: scale(1.1);
+  }
+  
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.carouselItem {
+  transition: opacity 0.3s ease-in-out;
 }

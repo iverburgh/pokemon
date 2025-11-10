@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { PropsWithChildren } from "react";
+import styles from "./PageTitle.module.scss";
 
 export function PageTitle({
   children,
@@ -10,7 +11,7 @@ export function PageTitle({
   description?: string;
 }>) {
   return (
-    <div>
+    <div className={styles.pageTitle}>
       <h1 className={cn("font-black text-5xl sm:text-6xl", className)}>
         {children}
       </h1>

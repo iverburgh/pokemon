@@ -1,4 +1,5 @@
 import type { ReactElement } from "react";
+import styles from "./TypeIcon.module.scss";
 
 export function TypeIcon({
   name,
@@ -7,7 +8,8 @@ export function TypeIcon({
   name: string;
   className?: string;
 }) {
-  return TYPE_SVG_MAP[name]?.({ className }) ?? null;
+  const combinedClassName = className ? `${styles.typeIcon} ${className}` : styles.typeIcon;
+  return TYPE_SVG_MAP[name]?.({ className: combinedClassName }) ?? null;
 }
 
 const TYPE_SVG_MAP: Record<

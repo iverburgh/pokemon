@@ -2,6 +2,7 @@ import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@/lib/utils"
+import styles from "./Tabs.module.scss"
 
 function Tabs({
   className,
@@ -10,7 +11,7 @@ function Tabs({
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
-      className={cn("flex flex-col gap-2", className)}
+      className={cn(styles.tabs, "flex flex-col gap-2", className)}
       {...props}
     />
   )

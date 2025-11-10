@@ -1,4 +1,22 @@
 // PageTitle styles
 .pageTitle {
-  // Component-specific styles
+  animation: slideIn 0.4s ease-out;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.pageTitleDescription {
+  color: var(--color-muted-foreground);
+  margin-top: 0.5rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

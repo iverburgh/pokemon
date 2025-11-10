@@ -2,6 +2,7 @@ import { PokeCard, PokeListPagination } from "@/components/organisms";
 import { ENGLISH_LANG_ID, PAGE_SIZE } from "@/consts";
 import { db } from "@/db";
 import { Fragment, PropsWithChildren } from "react";
+import styles from "./PokemonListPage.module.scss";
 
 type Props = { pageNum: number };
 
@@ -47,7 +48,7 @@ export async function PokemonListPage({
     <Fragment>
       {children}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className={`${styles.pokemonListPage} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8`}>
         {species.map((s) => {
           const defaultPokemon =
             s.pokemon_v2_pokemon.find((p) => p.is_default) ??

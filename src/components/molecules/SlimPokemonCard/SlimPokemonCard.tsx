@@ -1,6 +1,7 @@
 import { AppLink } from "@/components/atoms";
 import { ImageWithFallback } from "@/components/atoms";
 import { URLS } from "@/urls";
+import styles from "./SlimPokemonCard.module.scss";
 
 type Props = {
   title: string;
@@ -11,7 +12,7 @@ type Props = {
 export function SlimPokemonCard({ title, pokemonName, description }: Props) {
   return (
     <AppLink
-      className="flex gap-2 items-center rounded drop-border-xs interactive p-2 h-16 bg-card-background"
+      className={`${styles.slimPokemonCard} flex gap-2 items-center rounded drop-border-xs interactive p-2 h-16 bg-card-background`}
       href={URLS.pokemonDetail({
         name: pokemonName,
       })}

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { type SVGProps } from "react";
+import styles from "./Pokeball.module.scss";
 
 type PokeballProps = SVGProps<SVGSVGElement>;
 
@@ -9,6 +10,7 @@ export function Pokeball(props: PokeballProps) {
       width="100%"
       viewBox="0 0 326 327"
       xmlns="http://www.w3.org/2000/svg"
+      className={styles.pokeball}
       {...props}
     >
       <path

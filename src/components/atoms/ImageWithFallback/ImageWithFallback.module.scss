@@ -1,4 +1,19 @@
 // ImageWithFallback styles
 .imageWithFallback {
-  // Component-specific styles
+  animation: fadeIn 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageError {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

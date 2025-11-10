@@ -1,4 +1,37 @@
 // PokemonListPage styles
 .pokemonListPage {
-  // Component-specific styles
+  min-height: 100vh;
+}
+
+.pokemonGrid {
+  display: grid;
+  gap: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+  
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.paginationContainer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 2rem;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

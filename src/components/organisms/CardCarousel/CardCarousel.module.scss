@@ -1,4 +1,19 @@
 // CardCarousel styles
 .cardCarousel {
-  // Component-specific styles
+  .carouselItem {
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+.cardImage {
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(0.98);
+  }
 }

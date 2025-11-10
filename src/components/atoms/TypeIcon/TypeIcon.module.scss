@@ -1,4 +1,15 @@
 // TypeIcon styles
 .typeIcon {
-  // Component-specific styles
+  transition: transform 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
 }

@@ -7,6 +7,7 @@ import { URLS } from "@/urls";
 import { getPokemonColors } from "@/utils/getPokemonColors";
 import clsx from "clsx";
 import { CardBanner } from "@/components/atoms";
+import styles from "./PokeCard.module.scss";
 
 type Props = {
   speciesId?: number;
@@ -36,6 +37,7 @@ export function PokeCard({
   return (
     <div
       className={clsx(
+        styles.pokeCard,
         "@container rounded-xl drop-border flex flex-col gap-4 w-full aspect-square relative bg-gradient-to-b from-[var(--poke-bg)] from-10% via-80% via-card-background/75 to-card-background p-3 pt-4",
         isLink && "interactive",
         className,

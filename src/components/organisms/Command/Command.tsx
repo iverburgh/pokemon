@@ -10,6 +10,7 @@ import {
   DialogTitle,
 } from "@/components/molecules";
 import { cn } from "@/lib/utils";
+import styles from "./Command.module.scss";
 
 function Command({
   className,
@@ -19,6 +20,7 @@ function Command({
     <CommandPrimitive
       data-slot="command"
       className={cn(
+        styles.command,
         "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
         className,
       )}

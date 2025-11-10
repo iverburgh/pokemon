@@ -1,6 +1,17 @@
 // AppLink styles
-// Currently using Tailwind classes, but component-specific styles can be added here
-
 .appLink {
-  // Add any component-specific styles here
+  transition: all 0.15s ease-in-out;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &:active {
+    opacity: 0.6;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
 }

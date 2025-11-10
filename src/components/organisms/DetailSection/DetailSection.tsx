@@ -2,6 +2,7 @@
 import { CardBanner } from "@/components/atoms";
 import { cn } from "@/lib/utils";
 import { PropsWithChildren, ReactNode } from "react";
+import styles from "./DetailSection.module.scss";
 
 type Props = {
   title: ReactNode;
@@ -18,6 +19,7 @@ export function DetailSection({
   return (
     <div
       className={cn(
+        styles.detailSection,
         "drop-border flex-grow bg-card-background rounded-xl relative isolate",
         className,
       )}

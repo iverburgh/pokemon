@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 import Link from "next/link";
+import styles from "./AppLink.module.scss";
 
 export function AppLink({
   href,
@@ -7,7 +8,7 @@ export function AppLink({
   className,
 }: PropsWithChildren<{ href: string; className?: string }>) {
   return (
-    <Link href={href} className={className}>
+    <Link href={href} className={`${styles.appLink} ${className || ""}`}>
       {children}
     </Link>
   );

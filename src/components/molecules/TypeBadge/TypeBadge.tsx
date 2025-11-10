@@ -5,6 +5,7 @@ import { TypeIcon } from "@/components/atoms";
 import { URLS } from "@/urls";
 import { TYPE_COLORS } from "@/consts";
 import { Check } from "lucide-react";
+import styles from "./TypeBadge.module.scss";
 
 const typeBadgeVariants = cva(
   "border-1 border-[var(--type-color)] text-[var(--type-color)] transition-shadow duration-150 ring-0 bg-card-background",
@@ -58,6 +59,7 @@ export function TypeBadge({
   isLink?: boolean;
 } & VariantProps<typeof typeBadgeVariants>) {
   const classnames = cn(
+    styles.typeBadge,
     typeBadgeVariants({ variant, size, className, activeState, disabled }),
   );
 

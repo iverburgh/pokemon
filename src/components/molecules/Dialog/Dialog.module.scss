@@ -1,4 +1,28 @@
 // Dialog styles
-.dialog {
-  // Component-specific styles
+.dialogOverlay {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.dialogContent {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

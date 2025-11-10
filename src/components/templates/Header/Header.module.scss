@@ -1,4 +1,28 @@
 // Header styles
 .header {
-  // Component-specific styles
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.headerNav {
+  max-width: var(--container-content);
+  margin: 0 auto;
+}
+
+.searchButton {
+  transition: all 0.15s ease-in-out;
+  
+  &:hover {
+    background-color: var(--color-accent);
+  }
+}
+
+.searchKbd {
+  background-color: var(--color-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
 }

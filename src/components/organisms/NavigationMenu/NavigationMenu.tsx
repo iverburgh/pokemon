@@ -4,6 +4,7 @@ import { ChevronDownIcon } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
+import styles from "./NavigationMenu.module.scss";
 
 function NavigationMenu({
   className,
@@ -18,6 +19,7 @@ function NavigationMenu({
       data-slot="navigation-menu"
       data-viewport={viewport}
       className={cn(
+        styles.navigationMenu,
         "group/navigation-menu relative flex max-w-max flex-1 items-center justify-center",
         className,
       )}

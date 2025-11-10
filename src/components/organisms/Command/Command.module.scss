@@ -1,4 +1,38 @@
 // Command styles
 .command {
-  // Component-specific styles
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.commandInput {
+  &:focus {
+    outline: none;
+  }
+}
+
+.commandItem {
+  transition: background-color 0.15s ease-in-out;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: var(--color-accent);
+  }
+  
+  &[data-selected="true"] {
+    background-color: var(--color-accent);
+  }
+}
+
+.commandEmpty {
+  color: var(--color-muted-foreground);
+  text-align: center;
+  padding: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

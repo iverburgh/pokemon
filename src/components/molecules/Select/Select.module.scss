@@ -1,4 +1,28 @@
 // Select styles
-.select {
-  // Component-specific styles
+.selectTrigger {
+  transition: all 0.15s ease-in-out;
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+.selectContent {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

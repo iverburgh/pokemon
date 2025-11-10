@@ -3,6 +3,7 @@
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/molecules";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import styles from "./CardCarousel.module.scss";
 import {
   Carousel,
   CarouselContent,
@@ -45,6 +46,7 @@ export const CardCarousel = forwardRef<CardCarouselHandle, CardCarouselProps>(
           setDialogState((prev) => ({ ...prev, isOpen }));
         }}
       >
+        <div className={styles.cardCarousel}>
         <VisuallyHidden asChild>
           <DialogTitle>{title}</DialogTitle>
         </VisuallyHidden>
@@ -70,6 +72,7 @@ export const CardCarousel = forwardRef<CardCarouselHandle, CardCarouselProps>(
             </div>
           </Carousel>
         </DialogContent>
+        </div>
       </Dialog>
     );
   },

@@ -1,4 +1,22 @@
 // PokeListPagination styles
-.pokeListPagination {
-  // Component-specific styles
+.pagination {
+  view-transition-name: pagination-footer;
+}
+
+.paginationButton {
+  transition: all 0.15s ease-in-out;
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-accent);
+  }
+  
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  &.active {
+    background-color: var(--color-primary);
+    color: var(--color-primary-foreground);
+  }
 }

@@ -1,4 +1,25 @@
 // Pokeball styles
 .pokeball {
-  // Component-specific styles
+  transition: transform 0.3s ease-in-out;
+  
+  &:hover {
+    transform: rotate(15deg) scale(1.1);
+  }
+  
+  &:active {
+    transform: rotate(-15deg) scale(0.95);
+  }
+}
+
+.pokeballAnimated {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

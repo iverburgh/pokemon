@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import styles from "./CardBanner.module.scss";
 
 const cardBannerVariants = cva(
   "absolute top-0 right-4 py-1 px-3 font-bold rounded-lg z-1 bg-card-background -translate-y-[50%] truncate",
@@ -27,6 +28,6 @@ export function CardBanner({
   border,
 }: PropsWithChildren<VariantProps<typeof cardBannerVariants>>) {
   return (
-    <div className={cn(cardBannerVariants({ size, border }))}>{children}</div>
+    <div className={cn(styles.cardBanner, cardBannerVariants({ size, border }))}>{children}</div>
   );
 }
