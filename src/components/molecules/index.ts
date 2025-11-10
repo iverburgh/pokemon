@@ -1,4 +1,6 @@
 // Molecules - Simple combinations of atoms
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './Card/Card';
+export { DetailSection } from './DetailSection/DetailSection';
 export { 
   Dialog, 
   DialogClose, 

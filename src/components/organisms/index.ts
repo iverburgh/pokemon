@@ -13,7 +13,6 @@ export {
   CommandSeparator, 
   CommandShortcut 
 } from './Command/Command';
-export { DetailSection } from './DetailSection/DetailSection';
 export { 
   NavigationMenu, 
   NavigationMenuContent, 

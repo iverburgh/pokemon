@@ -1,4 +1,4 @@
-import { DetailSection } from "@/components/organisms";
+import { DetailSection } from "@/components/molecules";
 import { AppLink, PageTitle } from "@/components/atoms";
 import { ENGLISH_LANG_ID, MAX_TYPE_ID } from "@/consts";
 import { db } from "@/db";

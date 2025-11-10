@@ -1,4 +1,5 @@
-import { DetailSection, PokeCard } from "@/components/organisms";
+import { PokeCard } from "@/components/organisms";
+import { DetailSection } from "@/components/molecules";
 import { PokemonEvolutions } from "@/app/pokemon/[pokemon]/PokemonEvolutions";
 import { AppLink, SubsectionTitle } from "@/components/atoms";
 import { PokemonDetails } from "@/app/pokemon/[pokemon]/PokemonDetails";

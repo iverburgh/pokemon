@@ -1,4 +1,5 @@
-import { DetailSection, PokeCard } from "@/components/organisms";
+import { PokeCard } from "@/components/organisms";
+import { DetailSection } from "@/components/molecules";
 import { PageTitle, SubsectionTitle } from "@/components/atoms";
 import {
   ENGLISH_LANG_ID,

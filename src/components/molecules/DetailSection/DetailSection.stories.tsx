@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { DetailSection } from './DetailSection';
 
 const meta = {
-  title: 'Organisms/DetailSection',
+  title: 'Molecules/DetailSection',
   component: DetailSection,
   parameters: {
     layout: 'centered',

@@ -1,6 +1,6 @@
-import { DetailSection, PokeCard } from "@/components/organisms";
+import { PokeCard } from "@/components/organisms";
 import { PageTitle, SubsectionTitle } from "@/components/atoms";
-import { TypeBadge } from "@/components/molecules";
+import { DetailSection, TypeBadge } from "@/components/molecules";
 import {
   ENGLISH_LANG_ID,
   EXCLUDED_POKEMON_IDS,
